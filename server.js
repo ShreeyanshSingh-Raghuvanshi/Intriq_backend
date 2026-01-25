@@ -149,18 +149,29 @@ const app = express();
 
 // --- 1. CRITICAL HEADERS FOR RAZORPAY/GOOGLE AUTH POPOP ---
 // These headers allow the popup to communicate back to your window without being blocked
-app.use((req, res, next) => {
-  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
-  res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-  next();
-});
+// Allow all origins + specific allowed domains
+const allowedOrigins = [
+  "*",
+  "https://intriq-frontend-8uj4.vercel.app",
+  "http:localhost:5789"
+];
 
-// --- 2. CORS SETUP ---
-app.use(cors({ 
-  origin: "http://localhost:5173", 
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes("*") || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("CORS not allowed"), false);
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(passport.initialize());
