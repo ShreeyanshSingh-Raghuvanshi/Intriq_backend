@@ -188,6 +188,9 @@ app.use('/api/interview', require('./routes/interviewRoutes'));
 app.use('/api/roadmap', require('./routes/roadmapRoutes'));
 app.use('/api/premium', require('./routes/premiumRoutes')); // Handles flashcards/analysis
 app.use('/api/payments', require('./routes/paymentRoutes')); // Handles /create-order and /verify
+app.use('/health', 
+  (req, res) => res.status(200).json({ status: "ok" })
+); 
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
