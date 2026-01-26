@@ -9,14 +9,11 @@
 // module.exports = router;
 
 
-
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../middleware/auth');
-// Note: Ensure checkPremium middleware exists in auth.js, or remove it for testing
-const { checkPremium } = require('../middleware/auth'); 
 
-// IMPORT MUST MATCH CONTROLLER EXPORTS
+// Import Controllers
 const { 
     getFlashcards, 
     getGapAnalysis, 
@@ -24,7 +21,8 @@ const {
 } = require('../controllers/premiumController');
 
 // Define Routes
-router.post('/flashcards', verifyToken, getFlashcards); // Add checkPremium back when ready
+// NOTE: We rely on verifyToken to ensure req.user is populated.
+router.post('/flashcards', verifyToken, getFlashcards);
 router.post('/gap-analysis', verifyToken, getGapAnalysis);
 router.post('/career-guide', verifyToken, getCareerGuide);
 
