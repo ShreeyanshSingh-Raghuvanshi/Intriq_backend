@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // This URL must match the port your ai/main.py is running on (typically 8000)
-const AI_SERVICE_URL = 'http://localhost:8000';
+const AI_SERVICE_URL = process.env.AI_SERVICE_URL || 'http://localhost:8000';
 
 exports.generateAIResponse = async (prompt, systemPrompt = "You are a helpful assistant.") => {
   try {
