@@ -1,23 +1,3 @@
-// const { generateAIResponse } = require('../../ai/engine');
-
-// exports.getRoadmap = async (req, res) => {
-//   const { skills, jobRole } = req.body;
-//   const prompt = `Create a 4-week roadmap to become a ${jobRole}. 
-//     Current skills: ${skills}. Suggest 3 specific YouTube search terms for each week. 
-//     Return JSON: {"weeks": [{"week": 1, "topics": [], "yt_links": []}]}`;
-    
-//   const roadmap = await generateAIResponse(prompt);
-//   res.json(JSON.parse(roadmap));
-// };
-
-
-
-
-
-
-
-
-
 const axios = require('axios');
 const AI_SERVICE = process.env.AI_SERVICE_URL || 'http://localhost:8000';
 const User = require('../models/User');
