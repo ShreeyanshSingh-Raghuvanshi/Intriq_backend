@@ -1,23 +1,3 @@
-// const { generateAIResponse } = require('../../ai/engine');
-
-// exports.evaluateVoiceAnswer = async (req, res) => {
-//   const { question, transcript, context } = req.body;
-//   const prompt = `Question: ${question}. User Answer: ${transcript}. 
-//     Based on job role ${context.jobRole}, evaluate accuracy and communication. 
-//     Return JSON: {"feedback": "...", "score": 8}`;
-    
-//   const evaluation = await generateAIResponse(prompt);
-//   res.json(JSON.parse(evaluation));
-// };
-
-
-
-
-
-
-
-
-
 const axios = require('axios');
 const AI_SERVICE = process.env.AI_SERVICE_URL || 'http://localhost:8000';
 
