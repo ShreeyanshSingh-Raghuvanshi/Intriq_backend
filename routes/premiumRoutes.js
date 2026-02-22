@@ -1,14 +1,3 @@
-// const express = require('express');
-// const router = express.Router();
-// const { verifyToken, checkPremium } = require('../middleware/auth');
-// const { generateFlashcards, getGapAnalysis } = require('../controllers/premiumController');
-
-// router.post('/flashcards', verifyToken, checkPremium, generateFlashcards);
-// router.post('/gap-analysis', verifyToken, checkPremium, getGapAnalysis);
-
-// module.exports = router;
-
-
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../middleware/auth');
